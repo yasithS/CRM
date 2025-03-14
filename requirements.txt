@@ -1,0 +1,4 @@
+django
+mysql-conenctor
+mysql-connector-python
+  
