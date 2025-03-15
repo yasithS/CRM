@@ -25,9 +25,16 @@
             {% if records %}
                 {% for record in records%}
                     <tr>
-                    <td>{{record.id}}</td>
-                    <td>{{record.first_name}}
-                    {{record.last_name}}</td> 
+                    <td><a href="{% url 'record' record.id %}">
+                        {% load static %}
+                        <img src="{% static '/images/eye.svg' %}" alt="view">
+                        
+                    </a>
+                    </td>
+                    <td>
+                        {{record.first_name}}
+                        {{record.last_name}}
+                    </td> 
                     <td>{{record.email}} </td>
                     <td>{{record.phone}} </td> 
                     <td>{{record.address}}</td>
@@ -45,6 +52,7 @@
 
 
 {% else %}
+<div class="col-md-6 offset-md-3">
 <form method="POST" action="{% url 'home' %}">
     <h1>Login</h1>
     {% csrf_token %}
@@ -59,6 +67,7 @@
         <button type="submit" class="btn btn-secondary">Login</button>
     </form>
 </form>
+</div>
 
 </div>
 
