@@ -1,7 +1,6 @@
 {% extends 'template.html' %}
 
 {% block content %}
-
 <div>
 
 {% if user.is_authenticated %}
@@ -10,7 +9,7 @@
 <table class="table table-striped table-hover table-bordered ">
     <thead class="table-dark">
         <tr>
-            <th scope="col">ID</th>
+            <th scope="col"></th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
@@ -25,11 +24,8 @@
             {% if records %}
                 {% for record in records%}
                     <tr>
-                    <td><a href="{% url 'record' record.id %}">
-                        {% load static %}
-                        <img src="{% static '/images/eye.svg' %}" alt="view">
-                        
-                    </a>
+                    <td>
+                        <a href="{% url 'record' record.id %}">view</a>
                     </td>
                     <td>
                         {{record.first_name}}
