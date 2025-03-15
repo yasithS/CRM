@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
 from django.contrib import messages
 from .forms import SignUpForm
 from .models import Record
@@ -63,6 +64,15 @@ def customer_record(request, pk):
     else:
         messages.success(request, "You must be logged in to view records. ")
         return redirect('home')
+    
+def delete_user(request, pk):
+    if request.user.is_authenticated:
+        customer_record = Record.objects.get(id=pk)
+        print(customer_record)
+        customer_record.delete()
+        messages.success(request, 'home',  "Customer Record Delete Successfully")
+
+
 
     
 
